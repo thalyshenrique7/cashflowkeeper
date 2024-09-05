@@ -26,11 +26,15 @@ public class Account extends CreatedAndUpdatedAt {
 	@Enumerated(EnumType.STRING)
 	private AccountType accountType;
 
-	private BigDecimal balance;
+	private BigDecimal balance = BigDecimal.ZERO;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
+
+	public Account(Class<Account> class1) {
+
+	}
 
 	public Long getId() {
 
