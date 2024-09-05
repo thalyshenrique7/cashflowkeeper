@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsnop.cashflowkeeper.entity.User;
+import com.devsnop.cashflowkeeper.dto.UserDTO;
 import com.devsnop.cashflowkeeper.service.UserService;
 
 @RestController
@@ -20,8 +20,8 @@ public class UserController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void create(@RequestBody User user) {
+	public void create(@RequestBody UserDTO userDTO) {
 
-		this.userService.create(user);
+		this.userService.create(userDTO);
 	}
 }

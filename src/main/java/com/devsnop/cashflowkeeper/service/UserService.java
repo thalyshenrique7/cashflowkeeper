@@ -1,8 +1,8 @@
 package com.devsnop.cashflowkeeper.service;
 
-import com.devsnop.cashflowkeeper.entity.User;
+import com.devsnop.cashflowkeeper.dto.UserDTO;
 
 public interface UserService {
 
-	void create(User user);
+	void create(UserDTO userDTO);
 }
