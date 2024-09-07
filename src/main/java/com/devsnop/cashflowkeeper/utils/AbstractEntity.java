@@ -3,15 +3,26 @@ package com.devsnop.cashflowkeeper.utils;
 import java.util.Calendar;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-public class CreatedAndUpdatedAt {
+@MappedSuperclass
+public class AbstractEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column
 	protected Calendar createdAt;
 
+	@Column
 	protected Calendar updatedAt;
 
 	@PrePersist
@@ -30,6 +41,14 @@ public class CreatedAndUpdatedAt {
 
 		if (createdAt == null)
 			createdAt = updatedAt;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

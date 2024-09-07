@@ -6,21 +6,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.devsnop.cashflowkeeper.utils.CreatedAndUpdatedAt;
+import com.devsnop.cashflowkeeper.utils.AbstractEntity;
 
 @Entity
 @Table(name = "users")
-public class User extends CreatedAndUpdatedAt {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class User extends AbstractEntity {
 
 	private String username;
 
@@ -33,16 +26,6 @@ public class User extends CreatedAndUpdatedAt {
 
 	public User(Class<User> class1) {
 
-	}
-
-	public Long getId() {
-
-		return id;
-	}
-
-	public void setId(Long id) {
-
-		this.id = id;
 	}
 
 	public String getUsername() {

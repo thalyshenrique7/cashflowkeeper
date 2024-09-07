@@ -13,11 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.devsnop.cashflowkeeper.enums.AccountType;
-import com.devsnop.cashflowkeeper.utils.CreatedAndUpdatedAt;
+import com.devsnop.cashflowkeeper.utils.AbstractEntity;
 
 @Entity
 @Table(name = "account")
-public class Account extends CreatedAndUpdatedAt {
+public class Account extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
