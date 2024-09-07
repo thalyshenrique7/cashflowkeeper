@@ -25,10 +25,6 @@ public class Account extends AbstractEntity {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	public Account(Class<Account> class1) {
-
-	}
-
 	public AccountType getAccountType() {
 
 		return accountType;

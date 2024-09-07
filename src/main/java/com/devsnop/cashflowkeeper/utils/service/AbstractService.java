@@ -2,16 +2,13 @@ package com.devsnop.cashflowkeeper.utils.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+public interface AbstractService<TEntity> {
 
-@Service
-public interface AbstractService<T, ID> {
+	void save(TEntity entity);
 
-	void save(T entity);
+	void delete(Long id);
 
-	void delete(ID id);
+	TEntity findById(Long id);
 
-	T findById(ID id);
-
-	List<T> findAll();
+	List<TEntity> findAll();
 }

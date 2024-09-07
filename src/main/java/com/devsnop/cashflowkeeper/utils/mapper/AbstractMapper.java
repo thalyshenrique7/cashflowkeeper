@@ -2,7 +2,7 @@ package com.devsnop.cashflowkeeper.utils.mapper;
 
 import java.util.List;
 
-import com.devsnop.cashflowkeeper.utils.AbstractDTO;
+import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 
 public interface AbstractMapper<TEntity extends AbstractEntity, TDto extends AbstractDTO> {

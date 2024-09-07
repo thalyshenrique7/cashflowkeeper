@@ -1,10 +1,11 @@
 package com.devsnop.cashflowkeeper.dto;
 
-import com.devsnop.cashflowkeeper.utils.AbstractDTO;
+import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 
 public class UserDTO extends AbstractDTO {
 
 	private String username;
+	private String cpf;
 
 	public String getUsername() {
 
@@ -14,6 +15,14 @@ public class UserDTO extends AbstractDTO {
 	public void setUsername(String username) {
 
 		this.username = username;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 }

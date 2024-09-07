@@ -2,7 +2,7 @@ package com.devsnop.cashflowkeeper.dto;
 
 import java.math.BigDecimal;
 
-import com.devsnop.cashflowkeeper.utils.AbstractDTO;
+import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 
 public class AccountDTO extends AbstractDTO {
 

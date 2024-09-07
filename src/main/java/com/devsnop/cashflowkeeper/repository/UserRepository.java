@@ -1,11 +1,11 @@
 package com.devsnop.cashflowkeeper.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.devsnop.cashflowkeeper.entity.User;
+import com.devsnop.cashflowkeeper.utils.repository.AbstractRepository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends AbstractRepository<User> {
 
 }

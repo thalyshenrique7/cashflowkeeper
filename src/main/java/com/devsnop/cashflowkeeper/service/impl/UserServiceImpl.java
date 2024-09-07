@@ -1,15 +1,25 @@
 package com.devsnop.cashflowkeeper.service.impl;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.devsnop.cashflowkeeper.dto.UserDTO;
 import com.devsnop.cashflowkeeper.entity.User;
+import com.devsnop.cashflowkeeper.mapper.UserMapper;
 import com.devsnop.cashflowkeeper.service.UserService;
 import com.devsnop.cashflowkeeper.utils.exception.AbstractException;
-import com.devsnop.cashflowkeeper.utils.service.AbstractServiceImpl;
 import com.devsnop.cashflowkeeper.utils.validation.CpfValidator;
 
-@Component
-public class UserServiceImpl extends AbstractServiceImpl<User, Long> implements UserService {
+@Service
+public class UserServiceImpl extends UserAbstractServiceMapperImpl<User, UserDTO> implements UserService {
+
+	public UserServiceImpl() {
+
+		super(User.class);
+	}
+
+	@Autowired
+	private UserMapper userMapper;
 
 	@Override
 	public void validateCpf(String cpf) {
@@ -18,11 +28,13 @@ public class UserServiceImpl extends AbstractServiceImpl<User, Long> implements 
 	}
 
 	@Override
-	public void save(User user) {
-		
-		this.validateCpf(user.getCpf());
-		
-		super.save(user);
+	public void save(UserDTO userDTO) {
+
+		this.validateCpf(userDTO.getCpf());
+
+		User user = this.userMapper.toEntity(userDTO);
+
+		this.save(user);
 	}
 
 }

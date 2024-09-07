@@ -1,17 +1,15 @@
 package com.devsnop.cashflowkeeper.mapper;
 
-import java.io.Serializable;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
 import com.devsnop.cashflowkeeper.dto.AccountDTO;
 import com.devsnop.cashflowkeeper.entity.Account;
+import com.devsnop.cashflowkeeper.utils.mapper.AbstractMapper;
+import com.devsnop.cashflowkeeper.utils.mapper.AbstractMapperImpl;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public abstract class AccountMapper extends Account implements Serializable {
-
-	private static final long serialVersionUID = 985098201651404172L;
+public abstract class AccountMapper extends AbstractMapperImpl<Account> implements AbstractMapper<Account, AccountDTO> {
 
 	public AccountMapper() {
 

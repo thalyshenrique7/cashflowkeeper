@@ -2,38 +2,49 @@ package com.devsnop.cashflowkeeper.utils.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 import com.devsnop.cashflowkeeper.utils.exception.AbstractException;
+import com.devsnop.cashflowkeeper.utils.repository.AbstractRepository;
 
-public abstract class AbstractServiceImpl<T, ID> implements AbstractService<T, ID> {
+@Transactional
+public abstract class AbstractServiceImpl<TEntity extends AbstractEntity> implements AbstractService<TEntity> {
 
 	@Autowired
-	private JpaRepository<T, ID> jpaRepository;
+	private AbstractRepository<TEntity> jpaRepository;
+
+	private Class<TEntity> typeBase;
+
+	public AbstractServiceImpl(Class<TEntity> typeBase) {
+
+		this.typeBase = typeBase;
+	}
 
 	@Override
-	public void save(T entity) {
+	public void save(TEntity entity) {
 
 		this.jpaRepository.save(entity);
 	}
 
 	@Override
-	public void delete(ID id) {
+	public void delete(Long id) {
 
-		T entity = this.jpaRepository.findById(id).orElseThrow(() -> new AbstractException(id));
+		TEntity entity = this.jpaRepository.findById(id).orElseThrow(() -> new AbstractException(id));
 
 		this.jpaRepository.delete(entity);
 	}
 
 	@Override
-	public T findById(ID id) {
+	public TEntity findById(Long id) {
 
 		return this.findById(id);
 	}
 
 	@Override
-	public List<T> findAll() {
+	public List<TEntity> findAll() {
 
 		return this.jpaRepository.findAll();
 	}

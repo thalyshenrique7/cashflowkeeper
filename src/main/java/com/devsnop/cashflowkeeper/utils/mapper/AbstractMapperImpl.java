@@ -5,10 +5,9 @@ import java.util.Collection;
 import java.util.List;
 
 import org.mapstruct.ObjectFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
-import com.devsnop.cashflowkeeper.utils.AbstractDTO;
+import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 import com.devsnop.cashflowkeeper.utils.repository.AbstractRepository;
 
@@ -16,8 +15,12 @@ public abstract class AbstractMapperImpl<TEntity extends AbstractEntity> {
 
 	private Class<TEntity> typeBase;
 
-	@Autowired
 	protected AbstractRepository<TEntity> repository;
+
+	public AbstractMapperImpl(AbstractRepository<TEntity> repository) {
+
+		this.repository = repository;
+	}
 
 	public AbstractMapperImpl(Class<TEntity> clazz) {
 

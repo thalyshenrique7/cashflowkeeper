@@ -1,6 +1,6 @@
 package com.devsnop.cashflowkeeper.dto;
 
-import com.devsnop.cashflowkeeper.utils.AbstractDTO;
+import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 
 public class CategoryDTO extends AbstractDTO {
 
