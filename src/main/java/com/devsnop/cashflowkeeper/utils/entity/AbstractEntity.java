@@ -1,4 +1,4 @@
-package com.devsnop.cashflowkeeper.utils;
+package com.devsnop.cashflowkeeper.utils.entity;
 
 import java.util.Calendar;
 

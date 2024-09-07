@@ -9,7 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.devsnop.cashflowkeeper.utils.AbstractEntity;
+import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 
 @Entity
 @Table(name = "users")
