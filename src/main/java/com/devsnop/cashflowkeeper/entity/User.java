@@ -24,9 +24,7 @@ public class User extends AbstractEntity {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Account> accounts;
 
-	public User(Class<User> class1) {
-
-	}
+	private String cpf;
 
 	public String getUsername() {
 
@@ -75,6 +73,14 @@ public class User extends AbstractEntity {
 	public void setAccounts(List<Account> accounts) {
 
 		this.accounts = accounts;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 }

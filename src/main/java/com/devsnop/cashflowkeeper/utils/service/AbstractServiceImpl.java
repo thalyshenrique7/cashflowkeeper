@@ -2,12 +2,14 @@ package com.devsnop.cashflowkeeper.utils.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.devsnop.cashflowkeeper.utils.exception.AbstractException;
 
 public abstract class AbstractServiceImpl<T, ID> implements AbstractService<T, ID> {
 
+	@Autowired
 	private JpaRepository<T, ID> jpaRepository;
 
 	@Override

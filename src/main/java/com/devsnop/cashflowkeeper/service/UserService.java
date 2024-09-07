@@ -1,8 +1,9 @@
 package com.devsnop.cashflowkeeper.service;
 
-import com.devsnop.cashflowkeeper.dto.UserDTO;
+import com.devsnop.cashflowkeeper.entity.User;
+import com.devsnop.cashflowkeeper.utils.service.AbstractService;
 
-public interface UserService {
+public interface UserService extends AbstractService<User, Long> {
 
-	void create(UserDTO userDTO);
+	void validateCpf(String cpf);
 }
