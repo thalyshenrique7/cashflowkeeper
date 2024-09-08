@@ -32,7 +32,6 @@ public abstract class AccountMapper extends AbstractMapperImpl<Account> implemen
 	@Mappings({
 		@Mapping(target = "accountTypeDescription", source = "accountType.description"),
 		@Mapping(target = "categoryDescription", source = "category.categoryType.description"),
-		@Mapping(target = "user", source = "user.username"),
 	})
 	public abstract AccountDTODetails toDTODetails(Account entity);
 	

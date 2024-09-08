@@ -7,8 +7,6 @@ public class AccountDTODetails {
 	private String accountTypeDescription;
 	private String categoryDescription;
 
-	private String user;
-
 	private BigDecimal balance;
 
 	public String getAccountTypeDescription() {
@@ -17,14 +15,6 @@ public class AccountDTODetails {
 
 	public void setAccountTypeDescription(String accountTypeDescription) {
 		this.accountTypeDescription = accountTypeDescription;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
 	}
 
 	public String getCategoryDescription() {
