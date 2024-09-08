@@ -1,4 +1,4 @@
-package com.devsnop.cashflowkeeper.dto;
+package com.devsnop.cashflowkeeper.dto.user;
 
 import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 

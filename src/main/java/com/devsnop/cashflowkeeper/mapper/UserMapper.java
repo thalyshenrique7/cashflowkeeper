@@ -3,7 +3,8 @@ package com.devsnop.cashflowkeeper.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import com.devsnop.cashflowkeeper.dto.UserDTO;
+import com.devsnop.cashflowkeeper.dto.user.UserDTO;
+import com.devsnop.cashflowkeeper.dto.user.UserDTODetails;
 import com.devsnop.cashflowkeeper.entity.User;
 import com.devsnop.cashflowkeeper.utils.mapper.AbstractMapper;
 import com.devsnop.cashflowkeeper.utils.mapper.AbstractMapperImpl;
@@ -16,8 +17,6 @@ public abstract class UserMapper extends AbstractMapperImpl<User> implements Abs
 		super(User.class);
 	}
 
-	public abstract UserDTO toDTO(User entity);
-
-	public abstract User toEntity(UserDTO dto);
+	public abstract UserDTODetails toDTODetails(User entity);
 
 }

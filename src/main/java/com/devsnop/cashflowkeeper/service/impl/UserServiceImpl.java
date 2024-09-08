@@ -1,9 +1,11 @@
 package com.devsnop.cashflowkeeper.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.devsnop.cashflowkeeper.dto.UserDTO;
+import com.devsnop.cashflowkeeper.dto.user.UserDTO;
+import com.devsnop.cashflowkeeper.dto.user.UserDTODetails;
 import com.devsnop.cashflowkeeper.entity.User;
 import com.devsnop.cashflowkeeper.mapper.UserMapper;
 import com.devsnop.cashflowkeeper.service.UserService;
@@ -28,13 +30,11 @@ public class UserServiceImpl extends UserAbstractServiceMapperImpl<User, UserDTO
 	}
 
 	@Override
-	public void save(UserDTO userDTO) {
+	public UserDTODetails findUserById(Long id) throws NotFoundException {
 
-		this.validateCpf(userDTO.getCpf());
+		User user = super.findById(id);
 
-		User user = this.userMapper.toEntity(userDTO);
-
-		this.save(user);
+		return this.userMapper.toDTODetails(user);
 	}
 
 }
