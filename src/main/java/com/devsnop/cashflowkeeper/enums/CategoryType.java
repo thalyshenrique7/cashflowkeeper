@@ -2,8 +2,7 @@ package com.devsnop.cashflowkeeper.enums;
 
 public enum CategoryType {
 
-	REVENUE(1L, "Revenue"),
-	EXPENSE(2L, "Expense");
+	REVENUE(1L, "Revenue"), EXPENSE(2L, "Expense");
 
 	CategoryType(Long id, String description) {
 
@@ -33,5 +32,14 @@ public enum CategoryType {
 	public void setDescription(String description) {
 
 		this.description = description;
+	}
+
+	public static CategoryType getCategoryTypeById(Long categoryTypeId) {
+
+		for (CategoryType type : CategoryType.values())
+			if (type.getId().equals(categoryTypeId))
+				return type;
+
+		return null;
 	}
 }
