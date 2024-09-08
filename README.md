@@ -60,9 +60,9 @@ Request Body (JSON):
 Response Body (JSON):
 ```
 { 
-"accountTypeDescription": "string", 
-"categoryDescription": "string", 
-"balance": "BigDecimal" 
+"accountTypeDescription": "Current account", 
+"categoryDescription": "Revenue", 
+"balance": "100.0" 
 }
 ```
 
