@@ -66,6 +66,9 @@ public class AccountServiceImpl implements AccountService {
 
 		Account account = this.accountRepository.findById(accountId).orElseThrow(() -> new AccountException(accountId));
 
+		if (account.isDeleted())
+			throw new AccountException("Account does not exist or deleted.");
+
 		AccountDTODetails dto = this.accountMapper.toDTODetails(account);
 
 		return dto;
