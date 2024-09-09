@@ -31,6 +31,10 @@ public class Account extends AbstractEntity {
 	@JoinColumn(name = "category_id", referencedColumnName = "id")
 	private Category category;
 
+	private boolean active = true;
+
+	private boolean deleted = false;
+
 	public AccountType getAccountType() {
 
 		return accountType;
@@ -65,6 +69,29 @@ public class Account extends AbstractEntity {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public void deleted() {
+
+		this.setActive(false);
+		this.setDeleted(true);
+
 	}
 
 }

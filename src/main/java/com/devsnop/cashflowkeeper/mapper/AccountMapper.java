@@ -26,6 +26,7 @@ public abstract class AccountMapper extends AbstractMapperImpl<Account> implemen
 		@Mapping(target = "accountType", source = "accountTypeId", qualifiedByName = "mapToAccountType"),
 		@Mapping(target = "user.id", source = "userId"),
 		@Mapping(target = "category.categoryType", source = "categoryId", qualifiedByName = "mapToCategoryType"),
+		@Mapping(target = "category.name", source = "categoryName"),
 	})
 	public abstract Account toEntity(AccountDTO dto);
 

@@ -36,7 +36,7 @@ public class AccountServiceImpl implements AccountService {
 		if (!this.hasUser(accountDTO.getUserId()))
 			throw new AccountException("Account cannot be created because user don't exists.");
 
-		if (!this.isInitialBalanceGreaterThanZero(accountDTO.getBalance()))
+		if (this.isInitialBalanceLessOrEqualThanZero(accountDTO.getBalance()))
 			throw new AccountException("The initial balance must be greater than zero.");
 
 		try {
@@ -49,8 +49,8 @@ public class AccountServiceImpl implements AccountService {
 
 	}
 
-	private boolean isInitialBalanceGreaterThanZero(BigDecimal initialBalance) {
-		return BigDecimalUtils.isGreaterOrEqualThanZero(initialBalance);
+	private boolean isInitialBalanceLessOrEqualThanZero(BigDecimal initialBalance) {
+		return BigDecimalUtils.isLessOrEqualThan(initialBalance, BigDecimal.ZERO);
 	}
 
 	private boolean hasUser(Long userId) throws NotFoundException {
@@ -61,7 +61,7 @@ public class AccountServiceImpl implements AccountService {
 	public AccountDTODetails findAccountById(Long accountId) {
 
 		Account account = this.accountRepository.findById(accountId).orElseThrow(() -> new AccountException(accountId));
-		
+
 		AccountDTODetails dto = this.accountMapper.toDTODetails(account);
 
 		return dto;

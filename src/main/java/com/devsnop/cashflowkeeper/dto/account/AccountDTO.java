@@ -12,6 +12,11 @@ public class AccountDTO extends AbstractDTO {
 
 	private BigDecimal balance;
 
+	private String categoryName;
+
+	private boolean active;
+	private boolean deleted;
+
 	public Long getAccountTypeId() {
 		return accountTypeId;
 	}
@@ -42,6 +47,30 @@ public class AccountDTO extends AbstractDTO {
 
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }
