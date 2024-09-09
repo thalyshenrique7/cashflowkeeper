@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.devsnop.cashflowkeeper.dto.account.AccountDTO;
 import com.devsnop.cashflowkeeper.dto.account.AccountDTODetails;
 import com.devsnop.cashflowkeeper.entity.Account;
+import com.devsnop.cashflowkeeper.entity.User;
 import com.devsnop.cashflowkeeper.exception.AccountException;
 import com.devsnop.cashflowkeeper.mapper.AccountMapper;
 import com.devsnop.cashflowkeeper.repository.AccountRepository;
@@ -54,7 +55,10 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	private boolean hasUser(Long userId) throws NotFoundException {
-		return this.userService.findById(userId) != null;
+
+		User user = this.userService.findById(userId);
+
+		return user != null && user.isActive();
 	}
 
 	@Override
