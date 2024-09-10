@@ -1,20 +1,12 @@
-package com.devsnop.cashflowkeeper.entity;
-
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+package com.devsnop.cashflowkeeper.dto.category;
 
 import com.devsnop.cashflowkeeper.enums.CategoryType;
-import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
+import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 
-@Entity
-@Table(name = "category")
-public class Category extends AbstractEntity {
+public class CategoryDTO extends AbstractDTO {
 
 	private String name;
 
-	@Enumerated(EnumType.STRING)
 	private CategoryType categoryType;
 
 	public String getName() {
@@ -28,12 +20,10 @@ public class Category extends AbstractEntity {
 	}
 
 	public CategoryType getCategoryType() {
-
 		return categoryType;
 	}
 
 	public void setCategoryType(CategoryType categoryType) {
-
 		this.categoryType = categoryType;
 	}
 

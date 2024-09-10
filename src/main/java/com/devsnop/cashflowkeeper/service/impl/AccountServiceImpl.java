@@ -14,6 +14,7 @@ import com.devsnop.cashflowkeeper.exception.AccountException;
 import com.devsnop.cashflowkeeper.mapper.AccountMapper;
 import com.devsnop.cashflowkeeper.repository.AccountRepository;
 import com.devsnop.cashflowkeeper.service.AccountService;
+import com.devsnop.cashflowkeeper.service.CategoryService;
 import com.devsnop.cashflowkeeper.service.UserService;
 import com.devsnop.cashflowkeeper.utils.BigDecimalUtils;
 
@@ -29,23 +30,29 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private CategoryService categoryService;
+
 	@Override
 	public void create(AccountDTO accountDTO) throws NotFoundException {
-
-		Account account = this.accountMapper.toEntity(accountDTO);
 
 		if (!this.hasUser(accountDTO.getUserId()))
 			throw new AccountException("Account cannot be created because user don't exists.");
 
-		if (this.isInitialBalanceLessOrEqualThanZero(accountDTO.getBalance()))
+		if (this.isInitialBalanceLessOrEqualThanZero(accountDTO.getInitialBalance()))
 			throw new AccountException("The initial balance must be greater than zero.");
+
+		if (!this.categoryService.validateExistingCategory(accountDTO.getCategoryId()))
+			throw new AccountException("Category must be register to created account.");
+
+		Account account = this.accountMapper.toEntity(accountDTO);
 
 		try {
 
 			this.accountRepository.save(account);
 
 		} catch (Exception e) {
-			throw new AccountException("Occurred an error to created the account.");
+			throw new AccountException("Occurred an error to created the account.", e);
 		}
 
 	}

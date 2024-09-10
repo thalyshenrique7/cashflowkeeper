@@ -5,7 +5,8 @@ import java.math.BigDecimal;
 public class AccountDTODetails {
 
 	private String accountTypeDescription;
-	private String categoryDescription;
+	private String categoryTypeDescription;
+	private String categoryName;
 
 	private BigDecimal balance;
 
@@ -17,12 +18,20 @@ public class AccountDTODetails {
 		this.accountTypeDescription = accountTypeDescription;
 	}
 
-	public String getCategoryDescription() {
-		return categoryDescription;
+	public String getCategoryTypeDescription() {
+		return categoryTypeDescription;
 	}
 
-	public void setCategoryDescription(String categoryDescription) {
-		this.categoryDescription = categoryDescription;
+	public void setCategoryTypeDescription(String categoryTypeDescription) {
+		this.categoryTypeDescription = categoryTypeDescription;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	public BigDecimal getBalance() {

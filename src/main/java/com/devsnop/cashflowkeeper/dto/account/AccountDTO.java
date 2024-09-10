@@ -12,9 +12,7 @@ public class AccountDTO extends AbstractDTO {
 	private Long userId;
 	private Long categoryId;
 
-	private BigDecimal balance;
-
-	private String categoryName;
+	private BigDecimal initialBalance;
 
 	private boolean active;
 	private boolean deleted;
@@ -43,20 +41,12 @@ public class AccountDTO extends AbstractDTO {
 		this.categoryId = categoryId;
 	}
 
-	public BigDecimal getBalance() {
-		return balance;
+	public BigDecimal getInitialBalance() {
+		return initialBalance;
 	}
 
-	public void setBalance(BigDecimal balance) {
-		this.balance = balance;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
+	public void setInitialBalance(BigDecimal initialBalance) {
+		this.initialBalance = initialBalance;
 	}
 
 	public boolean isActive() {

@@ -2,7 +2,6 @@ package com.devsnop.cashflowkeeper.entity;
 
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,7 +26,7 @@ public class Account extends AbstractEntity {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "id")
 	private Category category;
 
@@ -35,7 +34,7 @@ public class Account extends AbstractEntity {
 
 	private boolean deleted = false;
 
-	private BigDecimal valueTransaction;
+	private BigDecimal balance;
 
 	public AccountType getAccountType() {
 
@@ -94,12 +93,11 @@ public class Account extends AbstractEntity {
 
 	}
 
-	public BigDecimal getValueTransaction() {
-		return valueTransaction;
+	public BigDecimal getBalance() {
+		return balance;
 	}
 
-	public void setValueTransaction(BigDecimal valueTransaction) {
-		this.valueTransaction = valueTransaction;
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
 	}
-
 }
