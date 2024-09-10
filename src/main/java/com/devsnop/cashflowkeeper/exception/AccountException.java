@@ -13,4 +13,9 @@ public class AccountException extends RuntimeException {
 
 		super("User ID " + id + " not found.");
 	}
+
+	public AccountException(String message, Exception exception) {
+
+		super(message, exception);
+	}
 }

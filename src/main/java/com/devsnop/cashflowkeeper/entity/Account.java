@@ -21,7 +21,7 @@ public class Account extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	private AccountType accountType;
 
-	private BigDecimal balance = BigDecimal.ZERO;
+	private BigDecimal initialBalance = BigDecimal.ZERO;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -35,6 +35,8 @@ public class Account extends AbstractEntity {
 
 	private boolean deleted = false;
 
+	private BigDecimal valueTransaction;
+
 	public AccountType getAccountType() {
 
 		return accountType;
@@ -45,14 +47,12 @@ public class Account extends AbstractEntity {
 		this.accountType = accountType;
 	}
 
-	public BigDecimal getBalance() {
-
-		return balance;
+	public BigDecimal getInitialBalance() {
+		return initialBalance;
 	}
 
-	public void setBalance(BigDecimal balance) {
-
-		this.balance = balance;
+	public void setInitialBalance(BigDecimal initialBalance) {
+		this.initialBalance = initialBalance;
 	}
 
 	public User getUser() {
@@ -92,6 +92,14 @@ public class Account extends AbstractEntity {
 		this.setActive(false);
 		this.setDeleted(true);
 
+	}
+
+	public BigDecimal getValueTransaction() {
+		return valueTransaction;
+	}
+
+	public void setValueTransaction(BigDecimal valueTransaction) {
+		this.valueTransaction = valueTransaction;
 	}
 
 }

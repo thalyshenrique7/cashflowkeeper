@@ -9,7 +9,6 @@ import org.mapstruct.ReportingPolicy;
 import com.devsnop.cashflowkeeper.dto.account.AccountDTO;
 import com.devsnop.cashflowkeeper.dto.account.AccountDTODetails;
 import com.devsnop.cashflowkeeper.entity.Account;
-import com.devsnop.cashflowkeeper.enums.AccountType;
 import com.devsnop.cashflowkeeper.enums.CategoryType;
 import com.devsnop.cashflowkeeper.utils.mapper.AbstractMapper;
 import com.devsnop.cashflowkeeper.utils.mapper.AbstractMapperImpl;
@@ -23,7 +22,6 @@ public abstract class AccountMapper extends AbstractMapperImpl<Account> implemen
 	}
 	
 	@Mappings({
-		@Mapping(target = "accountType", source = "accountTypeId", qualifiedByName = "mapToAccountType"),
 		@Mapping(target = "user.id", source = "userId"),
 		@Mapping(target = "category.categoryType", source = "categoryId", qualifiedByName = "mapToCategoryType"),
 		@Mapping(target = "category.name", source = "categoryName"),
@@ -35,11 +33,6 @@ public abstract class AccountMapper extends AbstractMapperImpl<Account> implemen
 		@Mapping(target = "categoryDescription", source = "category.categoryType.description"),
 	})
 	public abstract AccountDTODetails toDTODetails(Account entity);
-	
-	@Named("mapToAccountType")
-	protected AccountType mapToAccountType(Long accountTypeId) {
-		return AccountType.getAccountTypeById(accountTypeId);
-	}
 	
 	@Named("mapToCategoryType")
 	protected CategoryType mapToCategoryType(Long categoryTypeId) {

@@ -34,7 +34,6 @@ public class AccountController {
 	public ResponseEntity<AccountDTODetails> findAccountById(@PathVariable(value = "id") Long id)
 			throws NotFoundException {
 
-		return new ResponseEntity<>(this.accountService.findAccountById(id), HttpStatus.OK);
+		return new ResponseEntity<>(this.accountService.findAccountDetailsById(id), HttpStatus.OK);
 	}
-
 }

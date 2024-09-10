@@ -2,9 +2,15 @@ package com.devsnop.cashflowkeeper.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.devsnop.cashflowkeeper.enums.TransactionType;
 import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 
 /*
@@ -14,28 +20,34 @@ import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 @Table(name = "transaction")
 public class Transaction extends AbstractEntity {
 
-	private Long originAccountId;
+	@ManyToOne
+	@JoinColumn(name = "origin_account_id", referencedColumnName = "id")
+	private Account originAccount;
 
-	private Long destinationAccountId;
+	@ManyToOne
+	@JoinColumn(name = "destination_account_id", referencedColumnName = "id")
+	private Account destinationAccount;
 
+	@Column(name = "value_transaction", precision = 19, scale = 4)
 	private BigDecimal valueTransaction;
 
-	private String transactionType;
+	@Enumerated(EnumType.STRING)
+	private TransactionType transactionType;
 
-	public Long getOriginAccountId() {
-		return originAccountId;
+	public Account getOriginAccount() {
+		return originAccount;
 	}
 
-	public void setOriginAccountId(Long originAccountId) {
-		this.originAccountId = originAccountId;
+	public void setOriginAccount(Account originAccount) {
+		this.originAccount = originAccount;
 	}
 
-	public Long getDestinationAccountId() {
-		return destinationAccountId;
+	public Account getDestinationAccount() {
+		return destinationAccount;
 	}
 
-	public void setDestinationAccountId(Long destinationAccountId) {
-		this.destinationAccountId = destinationAccountId;
+	public void setDestinationAccount(Account destinationAccount) {
+		this.destinationAccount = destinationAccount;
 	}
 
 	public BigDecimal getValueTransaction() {
@@ -46,11 +58,11 @@ public class Transaction extends AbstractEntity {
 		this.valueTransaction = valueTransaction;
 	}
 
-	public String getTransactionType() {
+	public TransactionType getTransactionType() {
 		return transactionType;
 	}
 
-	public void setTransactionType(String transactionType) {
+	public void setTransactionType(TransactionType transactionType) {
 		this.transactionType = transactionType;
 	}
 

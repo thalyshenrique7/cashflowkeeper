@@ -62,9 +62,10 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public AccountDTODetails findAccountById(Long accountId) {
+	public AccountDTODetails findAccountDetailsById(Long accountDetailsId) {
 
-		Account account = this.accountRepository.findById(accountId).orElseThrow(() -> new AccountException(accountId));
+		Account account = this.accountRepository.findById(accountDetailsId)
+				.orElseThrow(() -> new AccountException(accountDetailsId));
 
 		if (account.isDeleted())
 			throw new AccountException("Account does not exist or deleted.");
@@ -72,6 +73,11 @@ public class AccountServiceImpl implements AccountService {
 		AccountDTODetails dto = this.accountMapper.toDTODetails(account);
 
 		return dto;
+	}
+
+	@Override
+	public Account findAccountById(Long accountId) {
+		return this.accountRepository.findById(accountId).orElseThrow(() -> new AccountException(accountId));
 	}
 
 }

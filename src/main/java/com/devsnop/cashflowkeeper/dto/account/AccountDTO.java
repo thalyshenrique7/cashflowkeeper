@@ -2,11 +2,13 @@ package com.devsnop.cashflowkeeper.dto.account;
 
 import java.math.BigDecimal;
 
+import com.devsnop.cashflowkeeper.enums.AccountType;
 import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 
 public class AccountDTO extends AbstractDTO {
 
-	private Long accountTypeId;
+	private AccountType accountType;
+
 	private Long userId;
 	private Long categoryId;
 
@@ -17,12 +19,12 @@ public class AccountDTO extends AbstractDTO {
 	private boolean active;
 	private boolean deleted;
 
-	public Long getAccountTypeId() {
-		return accountTypeId;
+	public AccountType getAccountType() {
+		return accountType;
 	}
 
-	public void setAccountTypeId(Long accountTypeId) {
-		this.accountTypeId = accountTypeId;
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
 	}
 
 	public Long getUserId() {

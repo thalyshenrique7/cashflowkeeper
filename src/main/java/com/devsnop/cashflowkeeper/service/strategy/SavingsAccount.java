@@ -1,24 +1,39 @@
 package com.devsnop.cashflowkeeper.service.strategy;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.devsnop.cashflowkeeper.entity.Account;
+import com.devsnop.cashflowkeeper.dto.transaction.TransactionDTO;
 import com.devsnop.cashflowkeeper.entity.Transaction;
+import com.devsnop.cashflowkeeper.mapper.TransactionMapper;
 
 @Component
 public class SavingsAccount implements GenerateTransactionService {
 
+	@Autowired
+	private TransactionMapper transactionMapper;
+
 	@Override
-	public void createTransaction(Account originAccount, Account destinationAccount) {
+	public Transaction createTransferTransaction(TransactionDTO transactionDTO) {
 
-		if (originAccount != null && destinationAccount != null) {
+		Transaction transaction = null;
 
-			Transaction transaction = new Transaction();
-			transaction.setOriginAccountId(originAccount.getId());
-			transaction.setDestinationAccountId(destinationAccount.getId());
-			// transaction.setValueTransaction(originAccount.getBalance());
-			transaction.setTransactionType(originAccount.getAccountType().getDescription());
-		}
+		if (transactionDTO != null)
+			transaction = this.transactionMapper.toEntity(transactionDTO);
+
+		return transaction;
+	}
+
+	@Override
+	public Transaction createDepositTransaction(TransactionDTO transactionDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Transaction createWithdrawTransaction(TransactionDTO transactionDTO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
