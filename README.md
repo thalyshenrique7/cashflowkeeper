@@ -19,11 +19,12 @@ Response Body (JSON):
   "username": "jax teller", 
   "cpf": "01234567891", 
   "accounts": 
-[ { 
-    "accountTypeDescription": "Current account", 
-    "categoryDescription": "Revenue", 
-    "balance": "100.0" 
-} ] 
+[{
+    "accountTypeDescription": "Current account",
+    "categoryTypeDescription": "Revenue",
+    "categoryName": "test",
+    "balance": 100.00
+}] 
 }
 ```
 
