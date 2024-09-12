@@ -91,6 +91,38 @@ Request Body (JSON):
 + name: String (Not Null)
 + categoryType: Enum CategoryType (Not Null) values (REVENUE, EXPENSE)
 
+## Entity: Transaction
+
+### Properties
+
++ id: Long (Not Null)
++ originAccount: Account (ManyToOne) (Not Null)
++ destinationAccount: Account (ManyToOne)
++ valueTransaction: BigDecimal (Not Null)
++ transactionType: Enum TransactionType (Not Null) values (TRANSFER, DEPOSIT, WITHDRAW)
+
+## Endpoints
+
+> POST localhost:8081/api/transaction
+Request Body (JSON):
+```
+{
+  "originAccountId": 3,
+  "destinationAccountId": 5,
+  "valueTransaction": 100,
+  "transactionType": "TRANSFER"
+}
+```
+##### Obs: To transaction type: DEPOSIT and WITHDRAW does not need informed destionationAccountId
+
+#### Transaction Rules
+
++ Withdrawal value must be greather than zero
++ Balance value must be greather than withdrawal value
++ Savings account don't pay tax for deposit and withdraw transactions <b>(Savings account don't has transfer transaction)</b>
++ Current account has 3 transactions free for month, after that paid two percent tax
++ For transfer transaction, destinationAccountId is required
+
 #### Technologies used:
 
 <table>
