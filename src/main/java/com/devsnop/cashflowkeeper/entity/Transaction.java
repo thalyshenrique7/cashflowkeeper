@@ -34,6 +34,9 @@ public class Transaction extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	private TransactionType transactionType;
 
+	@Column(name = "value_tax", precision = 19, scale = 4)
+	private BigDecimal valueTax;
+
 	public Account getOriginAccount() {
 		return originAccount;
 	}
@@ -64,6 +67,14 @@ public class Transaction extends AbstractEntity {
 
 	public void setTransactionType(TransactionType transactionType) {
 		this.transactionType = transactionType;
+	}
+
+	public BigDecimal getValueTax() {
+		return valueTax;
+	}
+
+	public void setValueTax(BigDecimal valueTax) {
+		this.valueTax = valueTax;
 	}
 
 }

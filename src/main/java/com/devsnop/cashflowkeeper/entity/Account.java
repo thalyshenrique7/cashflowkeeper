@@ -36,6 +36,8 @@ public class Account extends AbstractEntity {
 
 	private BigDecimal balance;
 
+	private int transactionQuantity;
+
 	public AccountType getAccountType() {
 
 		return accountType;
@@ -100,4 +102,13 @@ public class Account extends AbstractEntity {
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
+
+	public int getTransactionQuantity() {
+		return transactionQuantity;
+	}
+
+	public void setTransactionQuantity(int transactionQuantity) {
+		this.transactionQuantity = transactionQuantity;
+	}
+
 }

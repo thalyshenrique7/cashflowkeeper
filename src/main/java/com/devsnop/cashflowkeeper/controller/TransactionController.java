@@ -18,10 +18,10 @@ public class TransactionController {
 	@Autowired
 	private TransactionService transactionService;
 
-	@PostMapping(value = "/transfer")
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createTransferTransaction(@RequestBody TransactionDTO transactionDTO) throws Exception {
-		this.transactionService.createTransferTransaction(transactionDTO);
+		this.transactionService.checkTransactionType(transactionDTO);
 	}
 
 }

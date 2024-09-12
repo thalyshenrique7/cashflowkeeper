@@ -9,4 +9,6 @@ public interface TransactionService {
 	void createDepositTransaction(TransactionDTO transactionDTO) throws Exception;
 
 	void createWithdrawTransaction(TransactionDTO transactionDTO) throws Exception;
+
+	void checkTransactionType(TransactionDTO transactionDTO) throws Exception;
 }

@@ -15,6 +15,8 @@ public class TransactionDTO extends AbstractDTO {
 
 	private TransactionType transactionType;
 
+	private BigDecimal valueTax;
+
 	public Long getOriginAccountId() {
 		return originAccountId;
 	}
@@ -45,6 +47,14 @@ public class TransactionDTO extends AbstractDTO {
 
 	public void setTransactionType(TransactionType transactionType) {
 		this.transactionType = transactionType;
+	}
+
+	public BigDecimal getValueTax() {
+		return valueTax;
+	}
+
+	public void setValueTax(BigDecimal valueTax) {
+		this.valueTax = valueTax;
 	}
 
 }
