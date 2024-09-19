@@ -131,6 +131,7 @@ Request Body (JSON):
 <td>Spring Boot</td>
 <td>MySQL</td>
 <td>MapStruct</td>
+<td>Kafka</td>
 </tr>
 </table>
 
