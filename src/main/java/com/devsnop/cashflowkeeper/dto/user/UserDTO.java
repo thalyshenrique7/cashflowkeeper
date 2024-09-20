@@ -25,4 +25,9 @@ public class UserDTO extends AbstractDTO {
 		this.cpf = cpf;
 	}
 
+	@Override
+	public String toString() {
+		return "UserDTO [username=" + username + ", cpf=" + cpf + ", getId()=" + getId() + "]";
+	}
+
 }

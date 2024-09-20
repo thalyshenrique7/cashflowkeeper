@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devsnop.cashflowkeeper.dto.user.UserDTO;
 import com.devsnop.cashflowkeeper.dto.user.UserDTODetails;
+import com.devsnop.cashflowkeeper.kafka.producer.UserProducer;
 import com.devsnop.cashflowkeeper.service.UserService;
 
 @RestController
@@ -23,10 +24,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private UserProducer userProducer;
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody UserDTO userDTO) throws Exception {
 
+		this.userProducer.sendMessage(userDTO);
 		this.userService.save(userDTO);
 	}
 
