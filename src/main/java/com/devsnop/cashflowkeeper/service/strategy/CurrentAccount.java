@@ -35,8 +35,6 @@ public class CurrentAccount implements GenerateCurrentAccountTransactionService 
 	@Override
 	public Transaction createWithdrawTransaction(TransactionDTO transactionDTO, boolean isCalculateTax) {
 
-		Transaction transaction = this.transactionMapper.toEntity(transactionDTO);
-
 		BigDecimal valueToPayTax = BigDecimal.ZERO;
 
 		if (isCalculateTax) {
@@ -46,7 +44,7 @@ public class CurrentAccount implements GenerateCurrentAccountTransactionService 
 			transactionDTO.setValueTax(valueToPayTax);
 		}
 
-		return transaction;
+		return this.transactionMapper.toEntity(transactionDTO);
 	}
 
 	private BigDecimal calculateTax(BigDecimal transactionValue) {
