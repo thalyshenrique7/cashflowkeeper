@@ -23,8 +23,9 @@ public class UserProducer {
 	public void sendMessage(UserDTO userDTO) {
 		LOGGER.info("Success");
 		this.kafkaTemplate.send(KafkaConfig.CASH_FLOW_KEEPER_TOPIC, userDTO);
-		
-		
+
+		// tell the producer to send all data and block until done -- synchronous
+		this.kafkaTemplate.flush();
 	}
 
 }

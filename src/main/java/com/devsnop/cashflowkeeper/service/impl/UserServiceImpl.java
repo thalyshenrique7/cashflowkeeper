@@ -8,6 +8,7 @@ import com.devsnop.cashflowkeeper.dto.user.UserDTO;
 import com.devsnop.cashflowkeeper.dto.user.UserDTODetails;
 import com.devsnop.cashflowkeeper.entity.User;
 import com.devsnop.cashflowkeeper.mapper.UserMapper;
+import com.devsnop.cashflowkeeper.repository.UserRepository;
 import com.devsnop.cashflowkeeper.service.UserService;
 import com.devsnop.cashflowkeeper.utils.exception.AbstractException;
 import com.devsnop.cashflowkeeper.utils.validation.CpfValidator;
@@ -23,6 +24,9 @@ public class UserServiceImpl extends UserAbstractServiceMapperImpl<User, UserDTO
 	@Autowired
 	private UserMapper userMapper;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	@Override
 	public void validateCpf(String cpf) {
 		if (!CpfValidator.isCpfValid(cpf))
@@ -35,6 +39,27 @@ public class UserServiceImpl extends UserAbstractServiceMapperImpl<User, UserDTO
 		User user = super.findById(id);
 
 		return this.userMapper.toDTODetails(user);
+	}
+
+	@Override
+	public User save(UserDTO dto) throws Exception {
+
+		if (this.validateIfCpfAlreadyExists(dto.getCpf()))
+			throw new AbstractException("Cpf already exists!");
+
+		return super.save(dto);
+	}
+
+	@Override
+	public UserDTODetails findUserByCpf(String cpf) throws NotFoundException {
+
+		User user = this.userRepository.findByCpf(cpf);
+
+		return this.userMapper.toDTODetails(user);
+	}
+
+	private boolean validateIfCpfAlreadyExists(String cpf) throws NotFoundException {
+		return this.findUserByCpf(cpf) != null;
 	}
 
 }

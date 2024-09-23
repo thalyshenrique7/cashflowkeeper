@@ -27,6 +27,7 @@ public class KafkaConfig {
 	public static final String CASH_FLOW_KEEPER_TOPIC = "cashFlowKeeper";
 	public static final String BOOTSTRAP_SERVERS = "localhost:9092";
 	public static final String GROUP_ID = "myGroup";
+	// public static final String SCHEMA_REGISTRY_URL = "http://localhost:8081";
 
 	@Bean
 	public NewTopic createTopic() {
@@ -37,11 +38,12 @@ public class KafkaConfig {
 	@Bean
 	public ProducerFactory<String, UserDTO> userProducerFactory() {
 
-		Map<String, Object> configPropos = new HashMap<>();
-		configPropos.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
-		configPropos.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-		configPropos.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-		return new DefaultKafkaProducerFactory<String, UserDTO>(configPropos);
+		Map<String, Object> configProps = new HashMap<>();
+		configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+		configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+		// configProps.put("schema.registry.url", SCHEMA_REGISTRY_URL);
+		return new DefaultKafkaProducerFactory<String, UserDTO>(configProps);
 	}
 
 	@Bean
@@ -52,6 +54,8 @@ public class KafkaConfig {
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID);
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+//		props.put("schema.registry.url", SCHEMA_REGISTRY_URL);
+//		props.put("specific.avro.reader", true);
 		return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(),
 				new JsonDeserializer<>(UserDTO.class, false));
 	}

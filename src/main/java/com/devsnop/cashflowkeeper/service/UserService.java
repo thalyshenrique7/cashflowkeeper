@@ -12,4 +12,6 @@ public interface UserService extends UserAbstractServiceMapper<User, UserDTO> {
 	void validateCpf(String cpf);
 
 	UserDTODetails findUserById(Long id) throws NotFoundException;
+
+	UserDTODetails findUserByCpf(String cpf) throws NotFoundException;
 }
