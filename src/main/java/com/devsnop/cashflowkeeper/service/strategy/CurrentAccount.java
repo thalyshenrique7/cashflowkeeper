@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.devsnop.cashflowkeeper.dto.transaction.TransactionDTO;
-import com.devsnop.cashflowkeeper.entity.Account;
 import com.devsnop.cashflowkeeper.entity.Transaction;
 import com.devsnop.cashflowkeeper.mapper.TransactionMapper;
-import com.devsnop.cashflowkeeper.service.AccountService;
 
 @Component
 public class CurrentAccount implements GenerateCurrentAccountTransactionService {
@@ -17,13 +15,8 @@ public class CurrentAccount implements GenerateCurrentAccountTransactionService 
 	private static final BigDecimal TAX_TWO_PERCENT = new BigDecimal("2.00");
 	private static final BigDecimal VALUE_HUNDRED = new BigDecimal("100.00");
 
-	private static final int QUANTITY_FREE_TRANSACTION = 3;
-
 	@Autowired
 	private TransactionMapper transactionMapper;
-
-	@Autowired
-	private AccountService accountService;
 
 	@Override
 	public Transaction createTransferTransaction(TransactionDTO transactionDTO) {
@@ -40,17 +33,18 @@ public class CurrentAccount implements GenerateCurrentAccountTransactionService 
 	}
 
 	@Override
-	public Transaction createWithdrawTransaction(TransactionDTO transactionDTO) {
+	public Transaction createWithdrawTransaction(TransactionDTO transactionDTO, boolean isCalculateTax) {
 
-		Transaction transaction = null;
-		BigDecimal valueToPayTax = null;
+		Transaction transaction = this.transactionMapper.toEntity(transactionDTO);
 
-		Account account = this.accountService.findAccountById(transactionDTO.getOriginAccountId());
+		BigDecimal valueToPayTax = BigDecimal.ZERO;
 
-		if (account.getTransactionQuantity() > QUANTITY_FREE_TRANSACTION)
+		if (isCalculateTax) {
+
 			valueToPayTax = this.calculateTax(transactionDTO.getValueTransaction());
 
-		transactionDTO.setValueTax(valueToPayTax);
+			transactionDTO.setValueTax(valueToPayTax);
+		}
 
 		return transaction;
 	}

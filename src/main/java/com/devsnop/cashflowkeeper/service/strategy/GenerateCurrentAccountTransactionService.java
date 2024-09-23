@@ -9,6 +9,6 @@ public interface GenerateCurrentAccountTransactionService {
 
 	Transaction createDepositTransaction(TransactionDTO transactionDTO);
 
-	Transaction createWithdrawTransaction(TransactionDTO transactionDTO);
+	Transaction createWithdrawTransaction(TransactionDTO transactionDTO, boolean isCalculateTax);
 
 }

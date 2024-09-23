@@ -1,6 +1,10 @@
 package com.devsnop.cashflowkeeper.service.impl;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import org.hibernate.TransactionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,12 +68,14 @@ public class TransactionServiceImpl implements TransactionService {
 
 		this.validateBalanceAccount(originAccount, transactionDTO.getValueTransaction());
 
+		boolean isCalculateTax = this.hasMadeThreeTransactionsInCurrentMonth(originAccountId);
+
 		Transaction transaction = null;
 
 		switch (originAccount.getAccountType()) {
 
 		case CURRENT:
-			transaction = this.currentAccount.createWithdrawTransaction(transactionDTO);
+			transaction = this.currentAccount.createWithdrawTransaction(transactionDTO, isCalculateTax);
 			break;
 		case SAVINGS:
 			transaction = this.savingsAccount.createWithdrawTransaction(transactionDTO);
@@ -101,6 +107,24 @@ public class TransactionServiceImpl implements TransactionService {
 			break;
 		}
 
+	}
+
+	private boolean hasMadeThreeTransactionsInCurrentMonth(Long userId) {
+
+		Calendar startOfMonth = Calendar.getInstance();
+		startOfMonth.set(Integer.parseInt((new SimpleDateFormat("yyyy")).format(new Date().getTime())),
+				Integer.parseInt((new SimpleDateFormat("MM")).format(new Date().getTime())),
+				Calendar.getInstance().getActualMinimum(Calendar.DAY_OF_MONTH));
+
+		Calendar endOfMonth = Calendar.getInstance();
+		endOfMonth.set(Integer.parseInt((new SimpleDateFormat("yyyy")).format(new Date().getTime())),
+				Integer.parseInt((new SimpleDateFormat("MM")).format(new Date().getTime())),
+				Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH));
+
+		List<Transaction> transactions = this.transactionRepository.findByOriginAccountUserIdAndCreatedAtBetween(userId,
+				startOfMonth, endOfMonth);
+
+		return transactions.size() > 3;
 	}
 
 	private void validateBalanceAccount(Account account, BigDecimal withdrawalValue) {

@@ -2,6 +2,7 @@ package com.devsnop.cashflowkeeper.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -24,7 +25,7 @@ public class Transaction extends AbstractEntity {
 	@JoinColumn(name = "origin_account_id", referencedColumnName = "id")
 	private Account originAccount;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "destination_account_id", referencedColumnName = "id")
 	private Account destinationAccount;
 
