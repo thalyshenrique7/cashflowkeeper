@@ -3,7 +3,8 @@
 ### Properties
 
 + id: Long (Not Null)
-+ username: String (Not Null)
++ firstName: String (Not Null)
++ lastName: String
 + cpf: String (Not Null)
 + active: boolean (Default: True)
 + deleted: boolean (Default: False)
@@ -16,7 +17,8 @@
 Response Body (JSON):
 ```
 { 
-  "username": "jax teller", 
+  "firstName": "jax",
+  "lastName": "teller", 
   "cpf": "01234567891", 
   "accounts": 
 [{
@@ -32,7 +34,8 @@ Response Body (JSON):
 Request Body (JSON):
 ```
 { 
-  "username": "jax teller", 
+  "firstName": "jax",
+  "lastName": "teller",
   "cpf": "01234567891" 
 }
 ```
