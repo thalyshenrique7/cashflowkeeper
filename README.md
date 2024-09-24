@@ -1,3 +1,5 @@
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/snopdev/cashflowkeeper.svg)](https://hub.docker.com/repository/docker/snopdev/cashflowkeeper)
+
 ## Entity: User
 
 ### Properties
