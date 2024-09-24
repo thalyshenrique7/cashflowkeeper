@@ -132,6 +132,7 @@ Request Body (JSON):
 <td>MySQL</td>
 <td>MapStruct</td>
 <td>Kafka</td>
+<td>JUnit</td>
 </tr>
 </table>
 
