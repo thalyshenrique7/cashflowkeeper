@@ -4,17 +4,24 @@ import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 
 public class UserDTO extends AbstractDTO {
 
-	private String username;
+	private String firstName;
+	private String lastName;
 	private String cpf;
 
-	public String getUsername() {
-
-		return username;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setUsername(String username) {
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-		this.username = username;
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getCpf() {
@@ -27,7 +34,8 @@ public class UserDTO extends AbstractDTO {
 
 	@Override
 	public String toString() {
-		return "UserDTO [username=" + username + ", cpf=" + cpf + ", getId()=" + getId() + "]";
+		return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", cpf=" + cpf + ", getId()=" + getId()
+				+ "]";
 	}
 
 }
