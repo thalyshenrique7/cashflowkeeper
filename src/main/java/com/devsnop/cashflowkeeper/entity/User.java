@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -15,7 +16,11 @@ import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 @Table(name = "users")
 public class User extends AbstractEntity {
 
-	private String username;
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
 
 	private boolean active = true;
 
@@ -26,14 +31,20 @@ public class User extends AbstractEntity {
 
 	private String cpf;
 
-	public String getUsername() {
-
-		return username;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setUsername(String username) {
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-		this.username = username;
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public boolean isActive() {
