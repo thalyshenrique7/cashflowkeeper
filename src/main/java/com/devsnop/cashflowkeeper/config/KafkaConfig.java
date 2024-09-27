@@ -21,7 +21,7 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import com.devsnop.cashflowkeeper.dto.user.UserDTO;
 
-@Configuration
+// @Configuration
 public class KafkaConfig {
 
 	public static final String CASH_FLOW_KEEPER_TOPIC = "cashFlowKeeper";

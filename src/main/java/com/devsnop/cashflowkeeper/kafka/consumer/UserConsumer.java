@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.devsnop.cashflowkeeper.config.KafkaConfig;
 import com.devsnop.cashflowkeeper.dto.user.UserDTO;
 
-@Service
+// @Service
 public class UserConsumer {
 
 	private static final String GROUP_ID = "myGroup";

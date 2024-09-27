@@ -24,14 +24,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private UserProducer userProducer;
+//	@Autowired
+//	private UserProducer userProducer;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody UserDTO userDTO) throws Exception {
 
-		this.userProducer.sendMessage(userDTO);
+		// this.userProducer.sendMessage(userDTO);
 		this.userService.save(userDTO);
 	}
 
