@@ -138,6 +138,7 @@ Request Body (JSON):
 <td>MapStruct</td>
 <td>Kafka</td>
 <td>JUnit</td>
+<td>Docker</td>
 </tr>
 </table>
 
