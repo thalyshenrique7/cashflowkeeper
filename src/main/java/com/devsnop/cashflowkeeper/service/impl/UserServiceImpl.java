@@ -47,6 +47,8 @@ public class UserServiceImpl extends UserAbstractServiceMapperImpl<User, UserDTO
 		if (this.validateIfCpfAlreadyExists(dto.getCpf()))
 			throw new AbstractException("Cpf already exists!");
 
+		this.validateCpf(dto.getCpf());
+
 		return super.save(dto);
 	}
 

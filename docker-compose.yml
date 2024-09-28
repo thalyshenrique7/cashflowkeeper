@@ -29,7 +29,7 @@ services:
       SPRING.DATASOURCE.URL: jdbc:mysql://db:3308/cashflowkeeper_db?autoReconnect=true&useSSL=false&useTimezone=true&serverTimezone=UTC
     ports:
       - 80:80
-    command: mvn spring-boot:run
+    command: sh -c "./wait-for-it.sh db:3308 -- mvn spring-boot:run"
     depends_on:
       - db
     networks:
