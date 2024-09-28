@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0</version>
+		<version>3.0.5</version>
 		<relativePath />
 	</parent>
 
@@ -39,7 +39,7 @@
 		<springdoc.version>2.0.0</springdoc.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
 		<maven-surefire.version>3.0.0-M9</maven-surefire.version>
-		<testcontainers.version>1.18.0</testcontainers.version>
+		<testcontainers.version>1.20.1</testcontainers.version>
 	</properties>
 
 	<repositories>
@@ -72,7 +72,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -141,9 +140,8 @@
 
 		<dependency>
 			<groupId>org.testcontainers</groupId>
-			<artifactId>testcontainers</artifactId>
+			<artifactId>mysql</artifactId>
 			<version>${testcontainers.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
