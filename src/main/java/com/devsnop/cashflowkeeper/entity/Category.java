@@ -1,12 +1,12 @@
 package com.devsnop.cashflowkeeper.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
-
 import com.devsnop.cashflowkeeper.enums.CategoryType;
 import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "category")

@@ -2,17 +2,17 @@ package com.devsnop.cashflowkeeper.entity;
 
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import com.devsnop.cashflowkeeper.enums.TransactionType;
 import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /*
  * Created by Thalys Henrique at 09/09/24

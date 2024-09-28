@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
@@ -16,6 +14,8 @@ import org.springframework.data.jpa.domain.Specification;
 import com.devsnop.cashflowkeeper.utils.dto.AbstractDTO;
 import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 import com.devsnop.cashflowkeeper.utils.service.AbstractServiceImpl;
+
+import jakarta.transaction.Transactional;
 
 @Transactional
 public class AbstractServiceMapperImpl<TEntity extends AbstractEntity, TDto extends AbstractDTO>
