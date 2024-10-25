@@ -1,5 +1,7 @@
 package com.devsnop.cashflowkeeper.service;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 
 import com.devsnop.cashflowkeeper.dto.account.AccountDTO;
@@ -13,4 +15,6 @@ public interface AccountService {
 	AccountDTODetails findAccountDetailsById(Long accountDetailsId);
 
 	Account findAccountById(Long accountId);
+
+	BigDecimal subtractValueFromAccount(Account account, BigDecimal valueTransaction, BigDecimal valueTax);
 }

@@ -87,4 +87,17 @@ public class AccountServiceImpl implements AccountService {
 		return this.accountRepository.findById(accountId).orElseThrow(() -> new AccountException(accountId));
 	}
 
+	@Override
+	public BigDecimal subtractValueFromAccount(Account account, BigDecimal valueTransaction, BigDecimal valueTax) {
+
+		BigDecimal currentBalanceAccount = account.getBalance();
+
+		BigDecimal balanceAfterSubtract = currentBalanceAccount.subtract(valueTransaction.add(valueTax));
+
+		if (BigDecimalUtils.isLessThanZero(balanceAfterSubtract))
+			throw new AccountException("Balance insufficient to realize transaction.");
+
+		return balanceAfterSubtract;
+	}
+
 }

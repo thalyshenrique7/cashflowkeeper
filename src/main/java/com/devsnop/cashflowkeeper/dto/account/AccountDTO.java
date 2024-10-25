@@ -12,10 +12,10 @@ public class AccountDTO extends AbstractDTO {
 	private Long userId;
 	private Long categoryId;
 
-	private BigDecimal initialBalance;
+	private BigDecimal initialBalance = BigDecimal.ZERO;
 
-	private boolean active;
-	private boolean deleted;
+	private boolean active = true;
+	private boolean deleted = false;
 
 	public AccountType getAccountType() {
 		return accountType;

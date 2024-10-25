@@ -20,7 +20,7 @@ public class Account extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	private AccountType accountType;
 
-	private BigDecimal initialBalance = BigDecimal.ZERO;
+	private BigDecimal initialBalance;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -94,6 +94,10 @@ public class Account extends AbstractEntity {
 	}
 
 	public BigDecimal getBalance() {
+
+		if (balance == null)
+			return BigDecimal.ZERO;
+
 		return balance;
 	}
 

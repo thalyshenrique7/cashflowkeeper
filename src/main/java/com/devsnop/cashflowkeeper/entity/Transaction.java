@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import com.devsnop.cashflowkeeper.enums.TransactionType;
 import com.devsnop.cashflowkeeper.utils.entity.AbstractEntity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,7 +24,7 @@ public class Transaction extends AbstractEntity {
 	@JoinColumn(name = "origin_account_id", referencedColumnName = "id")
 	private Account originAccount;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "destination_account_id", referencedColumnName = "id")
 	private Account destinationAccount;
 
@@ -36,7 +35,7 @@ public class Transaction extends AbstractEntity {
 	private TransactionType transactionType;
 
 	@Column(name = "value_tax", precision = 19, scale = 4)
-	private BigDecimal valueTax;
+	private BigDecimal valueTax = BigDecimal.ZERO;
 
 	public Account getOriginAccount() {
 		return originAccount;
@@ -55,6 +54,10 @@ public class Transaction extends AbstractEntity {
 	}
 
 	public BigDecimal getValueTransaction() {
+
+		if (valueTransaction == null)
+			return BigDecimal.ZERO;
+
 		return valueTransaction;
 	}
 
@@ -71,6 +74,10 @@ public class Transaction extends AbstractEntity {
 	}
 
 	public BigDecimal getValueTax() {
+
+		if (valueTax == null)
+			return BigDecimal.ZERO;
+
 		return valueTax;
 	}
 

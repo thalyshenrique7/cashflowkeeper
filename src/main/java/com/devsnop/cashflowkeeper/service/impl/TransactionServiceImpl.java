@@ -21,7 +21,10 @@ import com.devsnop.cashflowkeeper.service.strategy.CurrentAccount;
 import com.devsnop.cashflowkeeper.service.strategy.SavingsAccount;
 import com.devsnop.cashflowkeeper.utils.BigDecimalUtils;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class TransactionServiceImpl implements TransactionService {
 
 	@Autowired
@@ -61,7 +64,8 @@ public class TransactionServiceImpl implements TransactionService {
 
 		Long originAccountId = transactionDTO.getOriginAccountId();
 
-		if (originAccountId == null || (originAccountId == null && transactionDTO.getDestinationAccountId() != null))
+		if (originAccountId.equals(null)
+				|| (originAccountId.equals(null) && !transactionDTO.getDestinationAccountId().equals(null)))
 			throw new TransactionException("You must informed an origin account to make transaction.");
 
 		Account originAccount = this.accountService.findAccountById(transactionDTO.getOriginAccountId());
@@ -81,6 +85,11 @@ public class TransactionServiceImpl implements TransactionService {
 			transaction = this.savingsAccount.createWithdrawTransaction(transactionDTO);
 			break;
 		}
+
+		transaction.setDestinationAccount(null);
+
+		originAccount.setBalance(this.accountService.subtractValueFromAccount(originAccount,
+				transaction.getValueTransaction(), transaction.getValueTax()));
 
 		try {
 
