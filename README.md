@@ -139,6 +139,7 @@ Request Body (JSON):
 <td>Kafka</td>
 <td>JUnit</td>
 <td>Docker</td>
+<td>Swagger</td>
 </tr>
 </table>
 
