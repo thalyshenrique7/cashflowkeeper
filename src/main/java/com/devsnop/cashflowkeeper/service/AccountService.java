@@ -17,4 +17,6 @@ public interface AccountService {
 	Account findAccountById(Long accountId);
 
 	BigDecimal subtractValueFromAccount(Account account, BigDecimal valueTransaction, BigDecimal valueTax);
+
+	BigDecimal addDepositValueToAccount(Account account, BigDecimal valueTransaction);
 }

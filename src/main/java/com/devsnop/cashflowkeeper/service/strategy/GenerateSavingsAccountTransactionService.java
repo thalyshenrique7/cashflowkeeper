@@ -5,7 +5,5 @@ import com.devsnop.cashflowkeeper.entity.Transaction;
 
 public interface GenerateSavingsAccountTransactionService {
 
-	Transaction createDepositTransaction(TransactionDTO transactionDTO);
-
 	Transaction createWithdrawTransaction(TransactionDTO transactionDTO);
 }

@@ -100,4 +100,14 @@ public class AccountServiceImpl implements AccountService {
 		return balanceAfterSubtract;
 	}
 
+	@Override
+	public BigDecimal addDepositValueToAccount(Account account, BigDecimal valueTransaction) {
+
+		BigDecimal currentBalanceAccount = account.getBalance();
+
+		BigDecimal balanceAfterAdd = currentBalanceAccount.add(valueTransaction);
+
+		return balanceAfterAdd;
+	}
+
 }

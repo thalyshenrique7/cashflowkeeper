@@ -27,12 +27,6 @@ public class CurrentAccount implements GenerateCurrentAccountTransactionService 
 	}
 
 	@Override
-	public Transaction createDepositTransaction(TransactionDTO transactionDTO) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Transaction createWithdrawTransaction(TransactionDTO transactionDTO, boolean isCalculateTax) {
 
 		BigDecimal valueToPayTax = BigDecimal.ZERO;

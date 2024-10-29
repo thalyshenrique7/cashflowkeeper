@@ -14,14 +14,6 @@ public class SavingsAccount implements GenerateSavingsAccountTransactionService 
 	private TransactionMapper transactionMapper;
 
 	@Override
-	public Transaction createDepositTransaction(TransactionDTO transactionDTO) {
-
-		Transaction transaction = this.transactionMapper.toEntity(transactionDTO);
-
-		return transaction;
-	}
-
-	@Override
 	public Transaction createWithdrawTransaction(TransactionDTO transactionDTO) {
 
 		Transaction transaction = this.transactionMapper.toEntity(transactionDTO);
